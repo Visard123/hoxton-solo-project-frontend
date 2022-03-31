@@ -1,45 +1,56 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-
+import { useState } from "react";
+// import { NavLink } from "react-router-dom";
+import "./App.css";
+//@ts-ignore
+import Header from "./components/Header/Header";
+//@ts-ignore
+import Footer from "./components/Footer/Footer";
+//@ts-ignore
+import Main from "./components/Main/Main";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+//@ts-ignore
+import LandingPage from "./pages/LandingPage";
+import "./pages/Login/Login.css";
 function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState([]);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <LandingPage />
+      <div className="login-form">
+        <form action="">
+          <div className="app-form">
+            <h1 className="login-headertext">Log In</h1>
+            <input type="text" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+
+      {/* <div className="login-form">
+        <form action="">
+          <div className="app-form">
+            <h1 className="login-headertext">Sign Up</h1>
+            <input type="text" name="name" placeholder="name" required />
+            <input type="email" name="email" placeholder="email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+            <button type="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

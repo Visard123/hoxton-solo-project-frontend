@@ -1,0 +1,20 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  background-color: #ffffff;
+  height: 80px;
+  justify-content: center;
+  align-content: center;
+}
+.nav-list {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-content: center;
+  gap: 30px;
+}
+
+.nav-list li {
+  text-decoration: none;
+  list-style: none;
+}

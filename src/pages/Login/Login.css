@@ -1,0 +1,37 @@
+.login-form {
+  display: grid;
+  grid-auto-flow: row;
+  width: 600px;
+  background-color: rgb(254, 254, 255);
+  justify-content: center;
+  place-self: center;
+  outline: 1px solid black;
+  gap: 20px;
+}
+.app-form {
+  display: grid;
+  grid-auto-flow: row;
+  width: 400px;
+  gap: 20px;
+}
+
+.app-form input {
+  width: 20rem;
+  height: 2rem;
+  background: var(--color-golden);
+  border: none;
+  outline: 1px solid grey;
+  border-radius: 5px;
+}
+
+.app-form button {
+  width: 326px;
+  height: 2rem;
+  border-radius: 0.3rem;
+  font-size: 15px;
+  font-family: var(--font-base);
+
+  border: none;
+  outline: 1px solid grey;
+  background-color: green;
+}

@@ -1,0 +1,7 @@
+.background-image {
+  background-image: url(https://storage.googleapis.com/baboon-images/web-banner/baboon-web-slider-1.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 70vh;
+}

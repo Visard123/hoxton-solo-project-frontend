@@ -2,22 +2,34 @@
   display: grid;
   grid-auto-flow: row;
   width: 600px;
-  background-color: rgb(254, 254, 255);
+
   justify-content: center;
   place-self: center;
-  outline: 1px solid black;
+
   gap: 20px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+  /* position: absolute; */
+  top: 70px;
 }
 .app-form {
   display: grid;
   grid-auto-flow: row;
   width: 400px;
   gap: 20px;
+  outline: 1px solid grey;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: #42cd69;
 }
 
 .app-form input {
   width: 20rem;
-  height: 2rem;
+  height: 2.5rem;
   background: var(--color-golden);
   border: none;
   outline: 1px solid grey;
@@ -26,12 +38,17 @@
 
 .app-form button {
   width: 326px;
-  height: 2rem;
+  height: 2.5rem;
   border-radius: 0.3rem;
   font-size: 15px;
   font-family: var(--font-base);
-
+  color: white;
+  font-weight: 700;
   border: none;
   outline: 1px solid grey;
-  background-color: green;
+  background-color: #42cd69;
+  outline: 1px solid rgb(8, 179, 8);
+  cursor: pointer;
+}
+.app-from button :hover {
 }

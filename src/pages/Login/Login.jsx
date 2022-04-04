@@ -6,6 +6,8 @@ export default function Login({ user, users, setUser }) {
   const [error, setError] = useState();
   const [emailError, setEmailError] = useState("");
 
+  const navigate = useNavigate();
+
   function logIn(e) {
     e.preventDefault();
     const email = e.target.email.value;
@@ -28,32 +30,46 @@ export default function Login({ user, users, setUser }) {
       });
   }
 
-  function signUp(e) {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  if (user) {
+    navigate(`/home`);
+  }
+  if (error) {
+    <div className="login-form">
+      <form action="" onSubmit={logIn}>
+        <div className="app-form">
+          <h1 className="login-headertext">Log In</h1>
+          <p>{error}</p>
+          <input type="text" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">SUBMIT</button>
+          {/* <p>Your first time</p> <p>Create an account</p> */}
+        </div>
+      </form>
+    </div>;
+  } else {
+    return (
+      <div className="login-form">
+        <form action="" onSubmit={logIn}>
+          <div className="app-form">
+            <h1 className="login-headertext">Log In</h1>
 
-    const userEmail = users.map((user) => user.email);
-    const emailInUse = "Email is in use";
-    console.log(userEmail);
-    if (!userEmail.includes(email)) {
-      fetch("http://localhost:4000/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, email: email, password: password }),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          if (data.error) {
-            alert("Oops, something went wrong.");
-          } else {
-            localStorage.setItem("token", data.token);
-            logIn(e);
-          }
-        });
-    } else setEmailError(emailInUse);
+            <input type="text" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">SUBMIT</button>
+            {/* <p>Your first time</p> <p>Create an account</p> */}
+          </div>
+        </form>
+      </div>
+    );
   }
 }

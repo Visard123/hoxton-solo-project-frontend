@@ -5,6 +5,9 @@ header {
   height: 80px;
   justify-content: center;
   align-content: center;
+  position: fixed;
+
+  width: 100vw;
 }
 .nav-list {
   display: grid;
@@ -17,4 +20,8 @@ header {
 .nav-list li {
   text-decoration: none;
   list-style: none;
+}
+header a {
+  text-decoration: none;
+  color: black;
 }

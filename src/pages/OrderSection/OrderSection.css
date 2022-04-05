@@ -1,0 +1,59 @@
+.order-section {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+}
+.foods-list {
+  display: grid;
+  background-color: aqua;
+}
+.order-form {
+  display: grid;
+  background-color: blueviolet;
+
+  height: 500px;
+}
+.order-form button {
+  height: 70px;
+  width: 300px;
+  background-color: #42cd69;
+  border: none;
+  color: white;
+  font-size: 24px;
+}
+
+.food-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.food-details img {
+  width: 150px;
+  height: 120px;
+  margin-top: 30px;
+}
+.counter {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+.counter h2 {
+  display: grid;
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.food-details button {
+  width: 50px;
+  height: 50px;
+  font-size: larger;
+}
+.listof-foods {
+  display: grid;
+  gap: 40px;
+}
+.delivery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}

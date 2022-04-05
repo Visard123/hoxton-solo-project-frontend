@@ -5,7 +5,6 @@ import Login from "../Login/Login";
 // import "./Login.css";
 
 export default function SignUp({ user, users, setUser }) {
-  const [error, setError] = useState();
   const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
 
@@ -19,7 +18,7 @@ export default function SignUp({ user, users, setUser }) {
     const emailInUse = "Email is in use";
     console.log(userEmail);
     if (!userEmail.includes(email)) {
-      fetch("http://localhost:4000/signup", {
+      fetch("http://localhost:4001/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +31,7 @@ export default function SignUp({ user, users, setUser }) {
             alert("Oops, something went wrong.");
           } else {
             localStorage.setItem("token", data.token);
-            Login(e);
+            setUser(data.user);
           }
         });
     } else setEmailError(emailInUse);
@@ -40,64 +39,25 @@ export default function SignUp({ user, users, setUser }) {
   if (user) {
     navigate(`/home`);
   }
-  if (error) {
-    return (
-      <div className="login-form">
-        <form onSubmit={signUp} action="">
-          <div className="app-form">
-            <h1 className="login-headertext">Sign Up</h1>
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">REGISTER</button>
-          </div>
-        </form>
-      </div>
-    );
-  } else if (emailError) {
-    return (
-      <div className="login-form">
-        <form onSubmit={signUp} action="">
-          <div className="app-form">
-            <h1 className="login-headertext">Sign Up</h1>
-            <p>Email is used</p>
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">REGISTER</button>
-          </div>
-        </form>
-      </div>
-    );
-  } else {
-    return (
-      <div className="login-form">
-        <form onSubmit={signUp} action="">
-          <div className="app-form">
-            <h1 className="login-headertext">Sign Up</h1>
 
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">REGISTER</button>
-          </div>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="login-form">
+      <form onSubmit={signUp} action="">
+        <div className="app-form">
+          <h1 className="login-headertext">Sign Up</h1>
+          {emailError ? <p>Email is used</p> : null}
+
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">REGISTER</button>
+        </div>
+      </form>
+    </div>
+  );
 }

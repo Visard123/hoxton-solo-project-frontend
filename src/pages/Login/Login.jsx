@@ -4,7 +4,6 @@ import "./Login.css";
 
 export default function Login({ user, users, setUser }) {
   const [error, setError] = useState();
-  const [emailError, setEmailError] = useState("");
 
   const navigate = useNavigate();
 
@@ -12,7 +11,7 @@ export default function Login({ user, users, setUser }) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    fetch("http://locahost4001/login", {
+    fetch("http://localhost:4001/login", {
       method: "POST",
       headers: {
         "Content-type": "aplication/json",
@@ -33,12 +32,13 @@ export default function Login({ user, users, setUser }) {
   if (user) {
     navigate(`/home`);
   }
-  if (error) {
+
+  return (
     <div className="login-form">
       <form action="" onSubmit={logIn}>
         <div className="app-form">
           <h1 className="login-headertext">Log In</h1>
-          <p>{error}</p>
+          {error ? error : null}
           <input type="text" name="email" placeholder="Email" required />
           <input
             type="password"
@@ -50,26 +50,6 @@ export default function Login({ user, users, setUser }) {
           {/* <p>Your first time</p> <p>Create an account</p> */}
         </div>
       </form>
-    </div>;
-  } else {
-    return (
-      <div className="login-form">
-        <form action="" onSubmit={logIn}>
-          <div className="app-form">
-            <h1 className="login-headertext">Log In</h1>
-
-            <input type="text" name="email" placeholder="Email" required />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">SUBMIT</button>
-            {/* <p>Your first time</p> <p>Create an account</p> */}
-          </div>
-        </form>
-      </div>
-    );
-  }
+    </div>
+  );
 }

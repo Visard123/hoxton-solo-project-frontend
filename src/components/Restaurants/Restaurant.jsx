@@ -1,29 +1,37 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Restaurants.css";
-export default function Restaurants(props) {
+export default function Restaurants() {
+  const [restaurants, setRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4001/restaurants")
+      .then((resp) => resp.json())
+      .then((restaurantfromserver) => {
+        setAllRestaurants(restaurantfromserver);
+        setRestaurants(restaurantfromserver);
+      });
+  }, []);
+
   return (
     <div className="restaurants-list">
-      <h1 className="restaurant-list">List of Properties</h1>
+      <h1 className="restaurant-list">List of Restaurants</h1>
       <ul className="listof-restaurants">
-        {/* {props.properties.map((property) => (
-          <Link key={property.id} to={`/properties/${property.id}`}> */}
-        <li>
-          <div className="restaurant-elements">
-            {/* <img src={restaurant.image} alt={restaurant.name} /> */}
-            <img
-              src="https://kfc.al/sites/default/files/Zinger%20Boxmaster%20Menu.jpg"
-              alt="kfc"
-            />
-          </div>
-          <div className="restaurant-data">
-            <div>
-              {/* <h2>{restaurant.name}</h2> */}
-              <h2>Kfc</h2>
+        {restaurants?.map((restaurant) => (
+          //   <Link key={restaurant.id} to={`/restaurant/${restaurant.id}`}>
+          <li className="restaurant-li">
+            <div className="restaurant-elements">
+              {/* <img src={restaurant.image} alt={restaurant.name} /> */}
+              <img src={restaurant.image} alt="kfc" />
             </div>
-          </div>
-        </li>
-        {/* </Link> */}
-        {/* ))} */}
+
+            <div>
+              <h2>{restaurant.name}</h2>
+            </div>
+          </li>
+          //   </Link>
+        ))}
       </ul>
     </div>
   );

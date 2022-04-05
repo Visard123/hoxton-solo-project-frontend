@@ -2,6 +2,29 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   padding-right: 40px;
-  gap: 30px;
+  gap: 20px;
+  row-gap: 70px;
+
   place-items: center;
+}
+
+.listof-restaurants li {
+  height: 300px;
+  display: grid;
+}
+.listof-restaurants img {
+  outline: 1px solid red;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 2px red;
+}
+
+.listof-restaurants img {
+  height: 300px;
+  width: 350px;
+}
+
+.restaurant-li {
+  display: grid;
+  grid-auto-flow: row;
+  padding-bottom: 60px;
 }

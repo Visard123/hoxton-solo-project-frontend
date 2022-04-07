@@ -10,7 +10,8 @@
 .order-form {
   display: grid;
   background-color: blueviolet;
-
+  position: sticky;
+  top: 80px;
   height: 500px;
 }
 .order-form button {

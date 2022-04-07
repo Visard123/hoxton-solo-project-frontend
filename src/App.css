@@ -19,3 +19,6 @@
 .App li {
   list-style: none;
 }
+.App a {
+  text-decoration: none;
+}

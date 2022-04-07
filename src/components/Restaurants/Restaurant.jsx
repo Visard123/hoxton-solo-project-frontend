@@ -19,18 +19,18 @@ export default function Restaurants() {
       <h1 className="restaurant-list">List of Restaurants</h1>
       <ul className="listof-restaurants">
         {restaurants?.map((restaurant) => (
-          //   <Link key={restaurant.id} to={`/restaurant/${restaurant.id}`}>
-          <li className="restaurant-li">
-            <div className="restaurant-elements">
-              {/* <img src={restaurant.image} alt={restaurant.name} /> */}
-              <img src={restaurant.image} alt="kfc" />
-            </div>
+          <Link key={restaurant.id} to={`/restaurants/${restaurant.id}`}>
+            <li className="restaurant-li">
+              <div className="restaurant-elements">
+                {/* <img src={restaurant.image} alt={restaurant.name} /> */}
+                <img src={restaurant.image} alt="kfc" />
+              </div>
 
-            <div>
-              <h2>{restaurant.name}</h2>
-            </div>
-          </li>
-          //   </Link>
+              <div>
+                <h2>{restaurant.name}</h2>
+              </div>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

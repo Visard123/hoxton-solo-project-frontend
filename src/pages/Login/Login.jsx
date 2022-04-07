@@ -14,7 +14,7 @@ export default function Login({ user, users, setUser }) {
     fetch("http://localhost:4001/login", {
       method: "POST",
       headers: {
-        "Content-type": "aplication/json",
+        "Content-type": "application/json",
       },
       body: JSON.stringify({ email: email, password: password }),
     })
@@ -24,6 +24,7 @@ export default function Login({ user, users, setUser }) {
           setError(dataFromServer.error);
         } else {
           localStorage.setItem("token", dataFromServer.token);
+          setError(undefined);
           setUser(dataFromServer.user);
         }
       });

@@ -3,10 +3,11 @@ import Main from "../components/Main/Main";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function LandingPage() {
+export default function LandingPage({ setUser, user }) {
   return (
     <>
-      <Header />
+      <Header setUser={setUser} user={user} />
+
       <Main />
       <Footer />
     </>

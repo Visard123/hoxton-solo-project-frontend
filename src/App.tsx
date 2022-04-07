@@ -21,11 +21,11 @@ import Signup from "./pages/Signup/Signup";
 import OrderSection from "./pages/OrderSection/OrderSection";
 
 import AllRestaurants from "./pages/AllRestaurants/AllRestaurants";
-
+import Home from "./pages/Home/Home";
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(undefined);
-
+  console.log(setUser);
   // useEffect(() => {
   //   fetch(`http://localhost:4001/users`)
   //     .then((resp) => resp.json())
@@ -50,17 +50,21 @@ function App() {
     }
   }, []);
 
-  function signOut(setUser) {
-    localStorage.removeItem("token");
-    setUser(null);
-  }
+  // function totalPrice(basket) {
+  //   let total = 0
+  //   for (const order of basket) {
+  //       total = total + order.item.price * order.quantity
+  //   }
+  //   return total.toFixed(2)
 
   return (
     <div className="App">
-      <LandingPage />
-      <OrderSection />
-      <AllRestaurants />
+      <LandingPage setUser={setUser} />
+      {/* <OrderSection /> */}
+
       <Routes>
+        <Route index element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
           path="/login"
           element={<Login setUser={setUser} user={user} users={users} />}

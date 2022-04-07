@@ -34,7 +34,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div>ffdssddfds</div>
+      <div></div>
     </footer>
   );
 }

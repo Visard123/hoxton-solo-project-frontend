@@ -39,6 +39,9 @@ export default function Login({ user, users, setUser }) {
       <form action="" onSubmit={logIn}>
         <div className="app-form">
           <h1 className="login-headertext">Log In</h1>
+          <button id="close" onClick={() => navigate("/landing-page")}>
+            x
+          </button>
           {error ? error : null}
           <input type="text" name="email" placeholder="Email" required />
           <input

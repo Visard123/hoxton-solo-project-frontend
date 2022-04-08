@@ -4,8 +4,9 @@
   padding-right: 40px;
   gap: 20px;
   row-gap: 70px;
-
+  padding: 40px;
   place-items: center;
+  margin-top: 20px;
 }
 
 .listof-restaurants li {
@@ -15,12 +16,9 @@
 .listof-restaurants img {
   outline: 1px solid red;
   border-radius: 50%;
-  box-shadow: 0px 0px 10px 2px red;
-}
-
-.listof-restaurants img {
-  height: 300px;
-  width: 350px;
+  box-shadow: 0px 0px 10px 2px rgb(56, 55, 55);
+  height: 260px;
+  width: 300px;
 }
 
 .restaurant-li {

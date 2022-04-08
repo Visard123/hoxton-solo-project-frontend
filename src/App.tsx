@@ -22,6 +22,7 @@ import OrderSection from "./pages/OrderSection/OrderSection";
 
 import AllRestaurants from "./pages/AllRestaurants/AllRestaurants";
 import Home from "./pages/Home/Home";
+import SingleRestaurant from "./pages/Restaurant/SingleRestaurant";
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(undefined);
@@ -50,30 +51,31 @@ function App() {
     }
   }, []);
 
-  // function totalPrice(basket) {
-  //   let total = 0
-  //   for (const order of basket) {
-  //       total = total + order.item.price * order.quantity
-  //   }
-  //   return total.toFixed(2)
-
   return (
     <div className="App">
-      <LandingPage setUser={setUser} />
+      {/* <LandingPage setUser={setUser} user={user} /> */}
       {/* <OrderSection /> */}
+      <Header setUser={setUser} user={user} />
 
       <Routes>
-        <Route index element={<Navigate to="/home" />} />
+        <Route index element={<Navigate to="/landing-page" />} />
+        <Route
+          path="/landing-page"
+          element={<LandingPage user={user} setUser={setUser} />}
+        />
+
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
           path="/login"
           element={<Login setUser={setUser} user={user} users={users} />}
         />
+        <Route path="/restaurants/:id" element={<SingleRestaurant />} />
         <Route
           path="/signup"
           element={<Signup setUser={setUser} user={user} users={users} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

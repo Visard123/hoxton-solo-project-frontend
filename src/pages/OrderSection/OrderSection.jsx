@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import Restaurants from "../../components/Restaurants/Restaurant";
 import "./OrderSection.css";
 export default function OrderSection() {
-  const [count, setCount] = useState(0);
-
   const [foods, setFoods] = useState([]);
+  const [order, setOrder] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:4001/foods`)
@@ -11,54 +11,47 @@ export default function OrderSection() {
       .then((foodsFromServer) => setFoods(foodsFromServer));
   }, []);
 
-  function incrementCount() {
-    setCount(count + 1);
-  }
-  function decrementCount() {
-    if (count > 0) {
-      setCount(count - 1);
-    }
+  useEffect(() => {
+    fetch(`http://localhost:4001/getCurrentOrder`, {
+      headers: {
+        Authorization: localStorage.token,
+      },
+    })
+      .then((resp) => resp.json())
+      .then((orderFromServer) => setOrder(orderFromServer));
+  }, []);
+
+  function incrementCount(itemId) {
+    fetch(`http://localhost:4001/increaseQuantity`, {
+      method: "PATCH",
+      headers: {
+        Authorization: localStorage.token,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        itemId,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((orderFromServer) => setOrder(orderFromServer));
   }
 
-  return (
-    <section className="order-section">
-      <div className="foods-list">
-        <ul className="listof-foods">
-          {foods.map((food) => (
-            <li className="food-details">
-              <div>
-                <h2>{food.title}</h2>
-                <p>{food.price}L</p>
-                <div className="counter">
-                  <button onClick={decrementCount}>-</button>
-                  <h2>{count}</h2>
-                  <button onClick={incrementCount}>+</button>
-                </div>
-              </div>
-              <div>
-                <img src={food.image} alt={food.title} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+  function decrementCount(itemId, item) {
+    fetch(`http://localhost:4001/decreaseQuantity`, {
+      method: "PATCH",
+      headers: {
+        Authorization: localStorage.token,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        itemId,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((orderFromServer) => setOrder(orderFromServer));
+  }
 
-      <div className="order-form">
-        <h2>Order at Restaurant.name</h2>
-        <div>
-          <h3>Total.num</h3>
-        </div>
-        <div className="delivery">
-          <p>Delivery</p>
-          <p> 100 L</p>
-        </div>
-        <div>
-          <h3>Total to pay</h3>
-        </div>
-        <div>
-          <button type="submit">Order here!</button>
-        </div>
-      </div>
-    </section>
-  );
+  if (order === null) {
+    return <h1>Loading...</h1>;
+  }
 }

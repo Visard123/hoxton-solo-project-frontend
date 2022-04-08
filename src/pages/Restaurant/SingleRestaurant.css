@@ -6,21 +6,30 @@
 .foods-list {
   display: grid;
   background-color: rgb(250, 253, 253);
+  margin-top: 40px;
 }
 .order-form {
   display: grid;
-  background-color: blueviolet;
-  position: sticky;
-  top: 80px;
-  height: 600px;
+  background-color: rgb(151, 149, 153);
+  /* position: sticky; */
+  margin-top: 60px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+
+  outline: 1px solid #13692b;
+  box-shadow: 0px 0px 2px 3px grey;
 }
-.delivery button {
-  height: 70px;
+.order-form img {
+  width: 100px;
+}
+#order-button {
+  height: 60px;
   width: 300px;
-  background-color: #1d201e;
+  background-color: #13692b;
   border: none;
-  color: rgb(187, 30, 30);
+  color: white;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .food-details {
@@ -74,4 +83,17 @@
 .delivery {
   display: grid;
   grid-template-columns: 2fr 1fr;
+}
+
+.order-details {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 60px;
+}
+.order-list {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-content: center;
+  gap: 60px;
 }

@@ -57,3 +57,10 @@
 }
 .app-from button :hover {
 }
+#close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  border-radius: 50%;
+}

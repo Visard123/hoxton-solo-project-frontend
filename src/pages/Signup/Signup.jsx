@@ -45,6 +45,9 @@ export default function SignUp({ user, users, setUser }) {
       <form onSubmit={signUp} action="">
         <div className="app-form">
           <h1 className="login-headertext">Sign Up</h1>
+          <button id="close" onClick={() => navigate("/landing-page")}>
+            x
+          </button>
           {emailError ? <p>Email is used</p> : null}
 
           <input type="text" name="name" placeholder="Name" required />

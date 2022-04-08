@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 export default function Header({ setUser, user }) {
+  const navigate = useNavigate();
   function signOut() {
     localStorage.removeItem("token");
     setUser(null);
+    navigate("/landing-page");
   }
 
   if (user) {
@@ -22,11 +24,16 @@ export default function Header({ setUser, user }) {
         <ul className="nav-list">
           {user ? (
             <>
-              <p>"Welcome" {user.name}</p>
-              <button onClick={signOut}> Log out</button>
+              <div className="user-signout">
+                <p>
+                  Welcome <span>{user.name}</span>
+                </p>
+                <button onClick={signOut}> Log out</button>
+              </div>
             </>
           ) : (
             <>
+              <NavLink to={`/landing-page`} children={""}></NavLink>
               <NavLink to={`/login`}>
                 <li>Logohu</li>
               </NavLink>
